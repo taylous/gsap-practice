@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <title>Hover Pulse</title>
+
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        width: 15vw;
+        height: 10vw;
+        border: 2px solid black;
+        border-radius: 10px;
+        position: relative;
+        background: url(https://picsum.photos/500/500) center no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        color: white;
+        text-shadow: 2px 2px 2px #000;
+      }
+
+      .card > button {
+        font-size: 30px;
+        background: dodgerblue;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: white;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        border: 1px solid #fff;
+        transform: scale(0.8);
+        will-change: transform;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>BUY NOW !</h1>
+      <button class="button">BUY</button>
+    </div>
+
+    <script>
+      const $button = document.querySelector('.button');
+
+      const pulse = gsap.to($button, {
+        scale: 1,
+        duration: 0.4,
+        repeat: -1,
+        yoyo: true,
+        paused: true,
+      });
+
+      $button.addEventListener('mouseenter', () => {
+        pulse.restart();
+      });
+      $button.addEventListener('mouseleave', () => {
+        pulse.pause();
+        gsap.to($button, {
+          scale: 0.8,
+          duration: 0.4,
+        });
+      });
+    </script>
+  </body>
+</html>

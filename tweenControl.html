@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <title>GSAP Practice</title>
+
+    <style>
+      body {
+        background: gray;
+      }
+      .orange {
+        width: 100px;
+        height: 100px;
+        background: orange;
+      }
+
+      #controller {
+        display: flex;
+        margin: 50px;
+      }
+      #controller > button {
+        background: black;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 30px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      #controller button:focus {
+        outline: none;
+        background: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="orange"></div>
+
+    <div id="controller">
+      <button class="play">play</button>
+      <button class="pause">pause</button>
+      <button class="resume">resume</button>
+      <button class="reverse">reverse</button>
+      <button class="restart">restart</button>
+    </div>
+
+    <script>
+      document.addEventListener('click', function (event) {
+        if (event.target.matches('button')) {
+          event.target.focus();
+        }
+      });
+
+      const tween = gsap.to('.orange', { x: 500, duration: 5, pause: true });
+      // tween.pause();
+
+      document.querySelector('.play').addEventListener('click', () => {
+        tween.play();
+      });
+      document.querySelector('.pause').addEventListener('click', () => {
+        tween.pause();
+      });
+      document.querySelector('.resume').addEventListener('click', () => {
+        tween.resume();
+      });
+      document.querySelector('.reverse').addEventListener('click', () => {
+        tween.reverse();
+      });
+      document.querySelector('.restart').addEventListener('click', () => {
+        tween.restart();
+      });
+    </script>
+  </body>
+</html>

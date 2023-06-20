@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <title>Keyframes</title>
+
+    <style>
+      body {
+        background: black;
+      }
+
+      .stage {
+        visibility: hidden;
+        width: 500px;
+        height: 350px;
+        background: gray;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+        perspective: 700px;
+      }
+
+      .among {
+        width: 80px;
+        height: 90px;
+        background: url(https://simseonbeom.github.io/Final/assets/among/Crew/Red.png);
+        background-size: cover;
+        position: absolute;
+        top: 100px;
+        transform: translateX(-100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="among"></div>
+      <div class="among"></div>
+      <div class="among"></div>
+      <div class="among"></div>
+      <div class="among"></div>
+      <div class="among"></div>
+      <div class="among"></div>
+      <div class="among"></div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline();
+      tl.to('.stage', { autoAlpha: 1 }).to('.among', {
+        keyframes: {
+          '0%': {},
+          '25%': { y: 0, ease: 'sine.out' },
+          '50%': { y: -100, rotation: 360, ease: 'sine.in' },
+          '75%': { y: 0 },
+          '100%': { x: 500 },
+        },
+        duration: 2,
+        stagger: {
+          each: 0.5,
+        },
+      });
+    </script>
+  </body>
+</html>

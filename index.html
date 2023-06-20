@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <title>GSAP Practice</title>
+
+    <style>
+      .box {
+        width: 100px;
+        min-width: 30px;
+        height: 50px;
+        margin: 2vw;
+      }
+
+      .stage {
+        width: 50vw;
+        height: 50vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        background: black;
+      }
+
+      .orange {
+        background: orange;
+      }
+      .pink {
+        background: hotpink;
+      }
+
+      .green {
+        background: green;
+      }
+
+      .red {
+        background: red;
+      }
+
+      .blue {
+        background: dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="orange box"></div>
+      <div class="pink box"></div>
+      <div class="green box"></div>
+      <div class="red box"></div>
+      <div class="blue box"></div>
+    </div>
+
+    <script>
+      // duration default value 0.5s
+      //   gsap.to('.orange', {
+      //     x: 300,
+      //     repeat: -1,
+      //     repeatDelay: 1,
+      //     yoyo: true,
+      //   });
+      // CSS Transform, Opacity 는 GPU를 사용하기 때문에 성능상의 이점이 좋다.
+
+      /**
+       *    Steep curve = fast rate of change
+       *    Flat curve = slow rate of change
+       */
+      //   gsap.to('.orange', {
+      //     x: 600,
+      //     duration: 3,
+      //     ease: Bounce.easeOut,
+      //   });
+      //   gsap.to('.pink', {
+      //     x: 600,
+      //     duration: 3,
+      //     ease: Bounce.easeIn,
+      //   });
+
+      /**
+       *  다중 요소 제어하기
+       *
+       *  stagger 속성을 사용하면 단일 tween에서 여러 대상의 시작 시간ㅇ르 offset 설정할 수 있습니다.
+       *
+       * amount: 설정한 시간안에 모든 animation 적용
+       * from: animation 발동 위치 center, edges, end 등
+       */
+      gsap.to('.box', {
+        y: -100,
+        delay: 1,
+        stagger: { from: 'end', amount: 1 },
+      });
+    </script>
+  </body>
+</html>
